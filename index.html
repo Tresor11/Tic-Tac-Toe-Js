@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="text-center">TIC TAC TOE</h1>
+    <section>
+      <div class="col-4 m-auto">
+        <div class="col-12"><button type="button" id="start" onclick="getName()">Start</button></div>
+        <h3 id="name1"></h3>
+        <div class="row bg-warning">
+          <div class="col-12 text-center d-flex mt-2">
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="0" onclick="engine.move('0')">..</button></div>
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="1">..</button></div>
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="2">..</button></div>
+          </div>
+          <div class="col-12 text-center d-flex mt-2">
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="3">..</button></div>
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="4">..</button></div>
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="5">..</button></div>
+          </div>
+          <div class="col-12 text-center d-flex mt-2">
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="6">..</button></div>
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="7">..</button></div>
+            <div class="col-4"><button type="button" class="btn btn-outline-primary" id="8">..</button></div>
+          </div>
+        </div>
+      </div>
+      <h1 class="text-center text-warning" id="game_status">
+      </h1>
+  </section>
+  <script src="js/dom.js"></script>
+  <script src="js/logic.js"></script>
+  </body>
+</html>
