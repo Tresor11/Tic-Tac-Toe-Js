@@ -16,40 +16,35 @@
 
 <body>
   <section id="play">
-  <h1 class="text-center">TIC TAC TOE</h1>
-    <div class="col-4 m-auto">
-      <div class="col-12">
-      <button type="button" class="btn btn-primary"> start</button>
-      </div>
-      <h3 id="name1"></h3>
+  <h1 class="text-center bg-success py-4">TIC TAC TOE</h1>
+    <div class="col-3 m-auto">
+      <h4 class="text-center bg-warning py-4" id="status">Game status</h4>
       <div class="row" id="board">
         <div class="col-12 text-center d-flex mt-2">
           <div class="col-4"><button type="button" class="btn btn-outline-primary" id="0"
-              onclick="engine.move('0')">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="1">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="2">..</button></div>
+              onclick="move('0')">..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="1" onclick="move('1')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="2" onclick="move('2')" >..</button></div>
         </div>
         <div class="col-12 text-center d-flex mt-2">
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="3">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="4">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="5">..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="3" onclick="move('3')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="4" onclick="move('4')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="5" onclick="move('5')" >..</button></div>
         </div>
         <div class="col-12 text-center d-flex mt-2">
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="6">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="7">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="8">..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="6" onclick="move('6')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="7" onclick="move('7')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="8" onclick="move('8')" >..</button></div>
         </div>
       </div>
     </div>
-    <h1 class="text-center text-warning" id="game_status">
-    </h1>
   </section>
   <section id="welcome" class="row">
     <h1 class="display-4 text-center my-5 col-12">
       TIC-TAC-TOE GAME
     </h1>
 
-    <button class="text-center m-auto btn btn-outline-primary" id="start">
+    <button class="text-center m-auto btn btn-outline-primary" id="start" onclick="start()">
       START🏁
     </button>
   </section>

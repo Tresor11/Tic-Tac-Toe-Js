@@ -1,7 +1,8 @@
 const dom = (function () {
   // eslint-disable-next-line no-unused-vars
-  function getName(current) {
-    return alert(`${current} enter your name`).value;
+  function getName(num) {
+    let name=prompt(`Player ${num} enter your name🙂`);
+    return name;
   }
 
   function getElement(id) {
@@ -16,10 +17,20 @@ const dom = (function () {
   function render(id, cont) {
     getElement(id).innerText = cont;
   }
-  return{
+
+  function hide(id) {
+    getElement(id).style.display = 'none';
+  }
+
+  function show(id) {
+    getElement(id).style.display = 'initial';
+  }
+  return {
     getElement,
     getId,
     getName,
     render,
-  }
+    hide,
+    show,
+  };
 }());
