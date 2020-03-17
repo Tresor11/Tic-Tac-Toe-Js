@@ -18,35 +18,30 @@
   <section id="play">
   <h1 class="text-center bg-success py-4">TIC TAC TOE</h1>
     <div class="col-3 m-auto">
-      <h4 class="text-center bg-warning py-4" id="status">Game status</h4>
-      <div class="row" id="board">
-        <div class="col-12 text-center d-flex mt-2">
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="0"
-              onclick="move('0')">..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="1" onclick="move('1')" >..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="2" onclick="move('2')" >..</button></div>
-        </div>
-        <div class="col-12 text-center d-flex mt-2">
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="3" onclick="move('3')" >..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="4" onclick="move('4')" >..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="5" onclick="move('5')" >..</button></div>
-        </div>
-        <div class="col-12 text-center d-flex mt-2">
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="6" onclick="move('6')" >..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="7" onclick="move('7')" >..</button></div>
-          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="8" onclick="move('8')" >..</button></div>
-        </div>
+      <div class="board" id="board">
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
+        <button class="cell btn btn-outline-primary" cell-btn>..</button>
       </div>
     </div>
+    <div class="winner text-center" id = "win-message">
+      <div id="win-message-response"></div>
+      <button class="restart-btn " id="restart"> Restart</button>
+    </div>
   </section>
-  <section id="welcome" class="row">
-    <h1 class="display-4 text-center my-5 col-12">
-      TIC-TAC-TOE GAME
-    </h1>
-
-    <button class="text-center m-auto btn btn-outline-primary" id="start" onclick="start()">
+    <!-- <div id="playerNames">
+      <input type="text" class="input" id="playerOneName" placeholder="Player One" required/>
+      <input type="text" class="input" id="playerTwoName" placeholder="Player Two" required/>
+    </div>
+    <button class="text-center m-auto btn btn-outline-primary " id="start" onclick="start()">
       START🏁
-    </button>
+    </button>- -->
   </section>
   <script src="js/dom.js"></script>
   <script src="js/logic.js"></script>

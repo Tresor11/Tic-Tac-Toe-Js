@@ -1,87 +1,90 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
-const game = (function () {
-  let turn = true;
-  let running = true;
-  const board = ['', '', '', '', '', '', '', '', ''];
-  function availabe(_index) {
-    return board[_index] == '';
-  }
 
-  const full = board.every((el) => el !== '');
-  const move = (_index, sign) => {
-    const id = dom.getId(_index);
-    if (availabe(id)) {
-      board[id] = sign;
-      dom.render(id, board[id]);
-      return true;
-    }
-    return false;
-  };
+const PLAYER_ONE = 'x';
+const PLAYER_TWO = 'o';
 
-  const victory = (arr) => {
-    [0, 1, 2].forEach((el) => {
-      if (
-        (arr[el * 3] === arr[el * 3 + 1]
-          && arr[el * 3] === arr[el * 3 + 2])
-        || (arr[el] === arr[el + 3] && arr[el] === arr[el + 6])
-      ) {
-        return true;
-      }
-    });
-    if (
-      (arr[0] === arr[4] && arr[0] === arr[8])
-      || (arr[2] === arr[4] && arr[2] === arr[6])
-    ) {
-      return true;
-    }
-    return false;
-  };
-  function gameEnd() {
-    if (full) {
-      running = false;
-      return false;
-    }
-    if (victory) {
-      running = false;
-      return true;
-    }
+const WINNING_COMBINATIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
 
-    turn = !turn;
-    return 0;
-  }
-  return {
-    board,
-    move,
-    victory,
-    turn,
-    full,
-    gameEnd,
-    running,
-  };
-}());
-const player = (name) => ({
-  name,
-});
-const engine = game;
+const gameElements = document.querySelectorAll('[cell-btn]')
+const board = document.getElementById('board')
+const winner= document.getElementById('win-message')
+const restartGame = document.getElementById('restart')
+const winnerMessage = document.querySelector('[win-message-response]')
+let playerTWoTurn
 
-function start(id) {
-  dom.hide('welcome');
-  dom.show('play');
-  const player1 = dom.getName(1);
-  const player2 = dom.getName(2);
-  document.getElementById('status').innerText = `${player2},${player1}`;
+startGame()
+
+function startGame(){
+  gameTurn = false
+  gameElements.forEach(cell => {
+    cell.classList.remove(PLAYER_ONE)
+    cell.classList.remove(PLAYER_TWO)
+    cell.removeEventListener('click', playerTurn)
+    cell.addEventListener('click', playerTurn, { once: true })
+  })
+  setTurn()
+  winner.classList.remove('show')
 }
 
-const symbol = bol => {
-  if (bol) {
-    return 'X';
+function playerTurn(e) {
+  const cell = e.target
+  const currentClass = playerTwoTurn ? CIRCLE_CLASS : X_CLASS
+  currentPosition(cell, currentClass)
+  if (checkWinner(currentClass)) {
+    endGame(false)
+  } else if (isDraw()) {
+    endGame(true)
+  } else {
+    setTurn()
   }
-  return 'O';
-};
-
-function move(id) {
-  engine.move(id, symbol(engine.turn));
-  engine.turn = !engine.turn;
 }
+
+function isDraw() {
+  return [...gameElements].every(cell => {
+    return cell.classList.contains(PLAYER_TWO) || cell.classList.contains(PLAYER_TWO)
+  })
+}
+
+function endGame(draw) {
+  if (draw) {
+    winnerMessage.innerText = 'Draw!'
+  } else {
+    winnerMessage.innerText = `${playerTwoTurn ? "O" : "X"} Wins!`
+  }
+  winner.classList.add('show')
+}
+
+function isDraw() {
+  return [...gameElements].every(cell => {
+    return cell.classList.contains(PLAYER_ONE) || cell.classList.contains(PLAYER_TWO)
+  })
+}
+
+function currentPosition(cell, currentClass) {
+  cell.classList.add(currentClass)
+}
+
+function setTurn() {
+  playerTwoTurn = !playerTwoTurn
+}
+
+function checkWinnner(currentClass) {
+  return WINNING_COMBINATIONS.some(combination => {
+    return combination.every(index => {
+      return gameElements[index].classList.contains(currentClass)
+    })
+  })
+}
+
+restartGame.addEventListener(click, startGame);
