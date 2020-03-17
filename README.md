@@ -23,6 +23,7 @@ This is part of the [Ordin projects](https://www.theodinproject.com/courses/java
 - The game ends when one of the players gets all his X's or O's in a row, column or diagonal and a congraturatory message is sent to him with his name. The game also ends in a draw if none of the players
 has their X's or O's in a line and the board is full.
 ![screenshot](docs/start4.png)
+- For a draw
 ![screenshot](docs/draw.png)
 
 - You can play again by clicking on the *Play Again* button or *Quit*
