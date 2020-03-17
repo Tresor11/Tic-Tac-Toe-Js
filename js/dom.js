@@ -1,36 +1,39 @@
-// const dom = (function () {
-//   // eslint-disable-next-line no-unused-vars
-//   function getName(num) {
-//     let name=prompt(`Player ${num} enter your name🙂`);
-//     return name;
-//   }
+/* eslint-disable func-names */
+// eslint-disable-next-line func-names
+// eslint-disable-next-line no-unused-vars
+const dom = (function () {
+  function getElement(id) {
+    return document.getElementById(String(id));
+  }
 
-//   function getElement(id) {
-//     return document.getElementById(String(id));
-//   }
+  function getName(num) {
+    return getElement(num).value;
+  }
 
-//   function getId(id) {
-//     const intId = getElement(id).id;
-//     return parseInt(intId);
-//   }
+  function getId(id) {
+    const intId = getElement(id).id;
+    // eslint-disable-next-line radix
+    return parseInt(intId);
+  }
 
-//   function render(id, cont) {
-//     getElement(id).innerText = cont;
-//   }
+  function render(id, cont) {
+    getElement(id).innerText = cont;
+  }
 
-//   function hide(id) {
-//     getElement(id).style.display = 'none';
-//   }
+  function hide(id) {
+    getElement(id).style.display = 'none';
+  }
 
-//   function show(id) {
-//     getElement(id).style.display = 'initial';
-//   }
-//   return {
-//     getElement,
-//     getId,
-//     getName,
-//     render,
-//     hide,
-//     show,
-//   };
-// }());
+  function show(id) {
+    getElement(id).style.display = 'block';
+  }
+
+  return {
+    getElement,
+    getId,
+    render,
+    getName,
+    hide,
+    show,
+  };
+}());

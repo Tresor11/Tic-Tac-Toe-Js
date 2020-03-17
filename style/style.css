@@ -2,15 +2,22 @@ body {
   overflow-x: hidden;
 }
 
-.board {
-  background-color: white;
-  height: 40vh;
-  width: 50vh;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+#modal {
+  position: absolute;
+  margin-top: 20vh;
+  z-index: 100;
+  display: none;
 }
-.cell {
-padding: 3px; 
+
+#form {
+  border: 3px solid black;
+  background-color: white;
+}
+
+.btn {
+  margin-top: 7%;
+  width: 100%;
+  height: 110%;
 }
 
 h1 {
@@ -31,8 +38,17 @@ h1 {
 #start:hover {
   width: 40%;
 }
-/* 
-play {
+
+#play {
   display: none;
-} */
+  margin-top: 10vh;
+}
+
+#winner {
+  display: none;
+}
+
+#status {
+  text-align: center;
+}
 /*# sourceMappingURL=style.css.map */

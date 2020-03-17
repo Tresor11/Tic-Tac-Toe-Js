@@ -1,90 +1,140 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
+// eslint-disable-next-line func-names
+const game = (function () {
+  const turn = true;
+  const running = true;
+  const board = ['', '', '', '', '', '', '', '', ''];
 
-const PLAYER_ONE = 'x';
-const PLAYER_TWO = 'o';
+  function victory(arr) {
+    for (let i = 0; i <= 2; i += 1) {
+      if ((arr[i * 3] === arr[(i * 3) + 1]
+          && arr[i * 3] === arr[(i * 3) + 2]
+          && arr[i * 3] !== '')
+         || (arr[i] === arr[i + 3]
+          && arr[i] === arr[i + 6]
+          && arr[i] !== '')) {
+        return true;
+      }
+    }
 
-const WINNING_COMBINATIONS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-]
+    if ((arr[0] === arr[4]
+        && arr[0] === arr[8]
+        && arr[0] !== '')
+       || (arr[2] === arr[4]
+        && arr[2] === arr[6]
+        && arr[2] !== '')) {
+      return true;
+    }
 
-const gameElements = document.querySelectorAll('[cell-btn]')
-const board = document.getElementById('board')
-const winner= document.getElementById('win-message')
-const restartGame = document.getElementById('restart')
-const winnerMessage = document.querySelector('[win-message-response]')
-let playerTWoTurn
+    return false;
+  }
 
-startGame()
+  return {
+    board,
+    victory,
+    turn,
+    running,
+  };
+}());
+const player = (name) => ({
+  name,
+});
+const engine = game;
 
-function startGame(){
-  gameTurn = false
-  gameElements.forEach(cell => {
-    cell.classList.remove(PLAYER_ONE)
-    cell.classList.remove(PLAYER_TWO)
-    cell.removeEventListener('click', playerTurn)
-    cell.addEventListener('click', playerTurn, { once: true })
-  })
-  setTurn()
-  winner.classList.remove('show')
+const validMove = (_index, sign) => {
+  const id = dom.getId(_index);
+  if (engine.board[id] === '') {
+    engine.board[id] = sign;
+    dom.render(id, engine.board[id]);
+    return true;
+  }
+  return false;
+};
+
+let player1 = player('');
+let player2 = player('');
+
+function check(bol = engine.turn) {
+  if (bol) {
+    return player1;
+  }
+  return player2;
 }
 
-function playerTurn(e) {
-  const cell = e.target
-  const currentClass = playerTwoTurn ? CIRCLE_CLASS : X_CLASS
-  currentPosition(cell, currentClass)
-  if (checkWinner(currentClass)) {
-    endGame(false)
-  } else if (isDraw()) {
-    endGame(true)
-  } else {
-    setTurn()
+function playAgain() {
+  engine.board = ['', '', '', '', '', '', '', '', ''];
+  engine.running = true;
+  engine.turn = true;
+  dom.show('status');
+  dom.render('status', `${check()} make a move 🙂 🤓`);
+  dom.hide('winner');
+  for (let i = 0; i <= 8; i += 1) {
+    dom.render(`${i}`, '..');
   }
 }
 
-function isDraw() {
-  return [...gameElements].every(cell => {
-    return cell.classList.contains(PLAYER_TWO) || cell.classList.contains(PLAYER_TWO)
-  })
+function cancel() {
+  // eslint-disable-next-line no-restricted-globals
+  location.reload(true);
 }
 
-function endGame(draw) {
-  if (draw) {
-    winnerMessage.innerText = 'Draw!'
-  } else {
-    winnerMessage.innerText = `${playerTwoTurn ? "O" : "X"} Wins!`
+function gameEnd() {
+  if (engine.victory(engine.board)) {
+    engine.running = !engine.running;
+    return true;
   }
-  winner.classList.add('show')
+  if (engine.board.every(el => el !== '')) {
+    engine.running = !engine.running;
+    return false;
+  }
+  return 0;
 }
 
-function isDraw() {
-  return [...gameElements].every(cell => {
-    return cell.classList.contains(PLAYER_ONE) || cell.classList.contains(PLAYER_TWO)
-  })
+function start(id) {
+  dom.hide('welcome');
+  dom.show('modal');
+  dom.show('play');
+  player1 = dom.getName('user1');
+  player2 = dom.getName('user2');
+  dom.render('status', `${check()} make a move 🙂 🤓`);
 }
 
-function currentPosition(cell, currentClass) {
-  cell.classList.add(currentClass)
+function winMove() {
+  if (!engine.running) {
+    if (gameEnd()) {
+      dom.render('win-msg', `CONGRATULATIONS ${check()}🏅🥇👏`);
+      dom.show('winner');
+      dom.hide('status');
+    } else {
+      dom.render('win-msg', 'IT\'S a TIE 😇👏');
+      dom.show('winner');
+      dom.hide('status');
+    }
+  }
 }
 
-function setTurn() {
-  playerTwoTurn = !playerTwoTurn
-}
 
-function checkWinnner(currentClass) {
-  return WINNING_COMBINATIONS.some(combination => {
-    return combination.every(index => {
-      return gameElements[index].classList.contains(currentClass)
-    })
-  })
-}
+const symbol = (bol = engine.turn) => {
+  if (bol) {
+    return 'X';
+  }
+  return 'O';
+};
 
-restartGame.addEventListener(click, startGame);
+function move(id) {
+  if (engine.running) {
+    if (validMove(id, symbol(engine.turn))) {
+      gameEnd();
+      winMove();
+      engine.turn = !engine.turn;
+      dom.render('status', `${check()} make a move 🙂 🤓`);
+    } else {
+      dom.render('status', ` please ${check()} make a valid move 🤔 🧐`);
+    }
+  } else {
+    return false;
+  }
+  return 0;
+}
