@@ -96,8 +96,8 @@ function start(id) {
   dom.hide('welcome');
   dom.show('modal');
   dom.show('play');
-  player1 = dom.getName('user1');
-  player2 = dom.getName('user2');
+  player1 = dom.getName('player1');
+  player2 = dom.getName('player2');
   dom.render('status', `${check()} make a move 🙂 🤓`);
 }
 

@@ -7,7 +7,11 @@ const dom = (function () {
   }
 
   function getName(num) {
-    return getElement(num).value;
+    const name = getElement(num).value;
+    if (name !== '') {
+      return name;
+    }
+    return num;
   }
 
   function getId(id) {
