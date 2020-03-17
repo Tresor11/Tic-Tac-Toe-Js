@@ -12,18 +12,18 @@ This is part of the [Ordin projects](https://www.theodinproject.com/courses/java
 
 
 ## How to play the game
-- Once you navigate to the home page, Click on the start button
+- Once you navigate to the home page, Click on the start button.
 ![screenshot](docs/start.png)
-- A form will pop up prompting you to enter your name. Please enter your name or else the game will by default give you names _PlayerOne_ and _PlayerTwo_
+- A form will pop up prompting you to enter your name. Please enter your name or else the game will by default give you names _PlayerOne_ and _PlayerTwo_.
 ![screenshot](docs/start2.png)
 
-- The game instructions will change per each member's turn and name prompting you to take position on the board. The first player takes *X* and they next player takes *O* mark on the board
+- The game instructions will change per each member's turn and name prompting you to take position on the board. The first player takes *X* and they next player takes *O* mark on the board.
 ![screenshot](docs/start3.png)
 
 - The game ends when one of the players gets all his X's or O's in a row, column or diagonal and a congraturatory message is sent to him with his name. The game also ends in a draw if none of the players
 has their X's or O's in a line and the board is full.
 ![screenshot](docs/start4.png)
-- For a draw
+- 
 ![screenshot](docs/draw.png)
 
 - You can play again by clicking on the *Play Again* button or *Quit*
