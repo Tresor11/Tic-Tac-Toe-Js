@@ -5,7 +5,6 @@
 const game = (function () {
   const turn = true;
   const running = true;
-  const board = ['', '', '', '', '', '', '', '', ''];
 
   function victory(arr) {
     for (let i = 0; i <= 2; i += 1) {
@@ -32,39 +31,45 @@ const game = (function () {
   }
 
   return {
-    board,
     victory,
     turn,
     running,
   };
 }());
-const player = (name) => ({
-  name,
-});
+
+const gameBoard = (() => {
+  const board = ['', '', '', '', '', '', '', '', ''];
+  return { board };
+})();
+
+const player = (name1, name2) => {
+  const player1 = name1;
+  const player2 = name2;
+  return { player1, player2 };
+};
+
+let players = player('', '');
 const engine = game;
 
 const validMove = (_index, sign) => {
   const id = dom.getId(_index);
-  if (engine.board[id] === '') {
-    engine.board[id] = sign;
-    dom.render(id, engine.board[id]);
+  if (gameBoard.board[id] === '') {
+    gameBoard.board[id] = sign;
+    dom.render(id, gameBoard.board[id]);
     return true;
   }
   return false;
 };
 
-let player1 = player('');
-let player2 = player('');
-
 function check(bol = engine.turn) {
   if (bol) {
-    return player1;
+    return players.player1;
   }
-  return player2;
+  return players.player2;
 }
 
 function playAgain() {
-  engine.board = ['', '', '', '', '', '', '', '', ''];
+  gameBoard.board = ['', '', '', '', '', '', '', '', ''];
   engine.running = true;
   engine.turn = true;
   dom.show('status');
@@ -81,11 +86,11 @@ function cancel() {
 }
 
 function gameEnd() {
-  if (engine.victory(engine.board)) {
+  if (engine.victory(gameBoard.board)) {
     engine.running = !engine.running;
     return true;
   }
-  if (engine.board.every(el => el !== '')) {
+  if (gameBoard.board.every(el => el !== '')) {
     engine.running = !engine.running;
     return false;
   }
@@ -96,8 +101,7 @@ function start(id) {
   dom.hide('welcome');
   dom.show('modal');
   dom.show('play');
-  player1 = dom.getName('player1');
-  player2 = dom.getName('player2');
+  players = player(dom.getName('player1'), dom.getName('player2'));
   dom.render('status', `${check()} make a move 🙂 🤓`);
 }
 
