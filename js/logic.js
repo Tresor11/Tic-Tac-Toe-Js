@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 // eslint-disable-next-line func-names
-const game = (function () {
+const game = (() => {
   const turn = true;
   const running = true;
 
@@ -35,7 +35,7 @@ const game = (function () {
     turn,
     running,
   };
-}());
+})();
 
 const gameBoard = (() => {
   const board = ['', '', '', '', '', '', '', '', ''];
