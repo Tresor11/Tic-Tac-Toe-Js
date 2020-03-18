@@ -1,0 +1,51 @@
+body{
+  overflow-x: hidden;
+  }
+
+#modal {
+    position: absolute;
+    margin-top: 20vh;
+    z-index: 100;
+    display: none;
+}
+
+#form {
+  border: 3px solid black;
+  background-color: white;
+}
+  
+  .btn{
+    margin-top: 7%;
+    width: 100%;
+    height: 110%;
+  }
+  h1{
+    font-family: 'Monoton', cursive;
+  }
+  
+  #start{
+    width: 25%;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
+    transition: width 2s;
+    -webkit-transition: width 2s;
+    -moz-transition: width 2s;
+    -ms-transition: width 2s;
+    -o-transition: width 2s;
+  }
+  
+  #start:hover{
+    width: 40%;
+  }
+  
+  #play{
+    display: none;
+    margin-top: 10vh;
+  }
+  #winner{
+    display: none;
+  }
+
+#status{
+  text-align: center;
+  }

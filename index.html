@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Tic Tac Toe</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <section id="play">
+  <h1 class="text-center py-4">TIC TAC TOE</h1>
+  <h4 class="m-auto py-4 display-5" id="status">Game status</h4>
+    <div class="col-3 m-auto">
+      <div class="row" id="board">
+        <div class="col-12 text-center d-flex mt-2">
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="0"
+              onclick="move('0')">..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="1" onclick="move('1')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="2" onclick="move('2')" >..</button></div>
+        </div>
+        <div class="col-12 text-center d-flex mt-2">
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="3" onclick="move('3')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="4" onclick="move('4')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="5" onclick="move('5')" >..</button></div>
+        </div>
+        <div class="col-12 text-center d-flex mt-2">
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="6" onclick="move('6')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="7" onclick="move('7')" >..</button></div>
+          <div class="col-4"><button type="button" class="btn btn-outline-primary" id="8" onclick="move('8')" >..</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 bg-waring " id="winner">
+      <h1 class="text-center py-4 text-success m-auto" id="win-msg">Wegot a winner</h1>
+      <div class="d-flex m-auto col-4"> <button class="btn btn-outline-danger m-4" onclick="cancel()"> Quit</button> <button class="btn btn-outline-success m-4" onclick="playAgain()">Play again </button> </div>
+    </div>
+  </section>
+  <section id="welcome" class="row">
+    <h1 class="display-4 text-center my-5 col-12">
+      TIC-TAC-TOE GAME
+    </h1>
+
+    <div id="modal" class="col-12 row">
+      <form action="" class="col-3 m-auto bg-white p-3 border border-dark" id="form">
+        <div class="form-group">
+          <label for="title">Player1</label>
+          <input type="text" name="Player2" id="player1" class="form-control" placeholder="Player1" aria-describedby="helpId" required>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Player2</label>
+          <input type="text" name="Player2" id="player2" class="form-control" placeholder="Player2"
+            aria-describedby="helpId" required>
+        </div>
+
+        <div class="form-group d-flex justify-content-around">
+          <button type="button" class="btn btn-outline-success" id="submit" onclick="start()">play
+            </button>
+        </div>
+      </form>
+    </div>
+    
+
+    <button class="text-center m-auto btn btn-outline-primary" id="start" onclick="dom.show('modal')">
+      START🏁
+    </button>
+  </section>
+  <script src="js/dom.js"></script>
+  <script src="js/logic.js"></script>
+</body>
+
+</html>
