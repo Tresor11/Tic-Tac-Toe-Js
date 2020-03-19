@@ -53,7 +53,7 @@ const engine = game;
 
 const validMove = (_index, sign) => {
   const id = dom.getId(_index);
-  if (gameBoard.board[id] === '') {
+  if (gameBoard.board[id] === '' && engine.running) {
     gameBoard.board[id] = sign;
     dom.render(id, gameBoard.board[id]);
     return true;
@@ -87,11 +87,11 @@ function cancel() {
 
 function gameEnd() {
   if (engine.victory(gameBoard.board)) {
-    engine.running = !engine.running;
+    engine.running = false;
     return true;
   }
   if (gameBoard.board.every(el => el !== '')) {
-    engine.running = !engine.running;
+    engine.running = false;
     return false;
   }
   return 0;
