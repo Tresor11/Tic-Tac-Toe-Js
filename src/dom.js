@@ -41,3 +41,5 @@ const dom = (function () {
     show,
   };
 }());
+
+export default dom;

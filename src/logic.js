@@ -1,7 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-// eslint-disable-next-line func-names
+import dom from './dom';
+
 const game = (() => {
   const turn = true;
   const running = true;
@@ -97,7 +95,7 @@ function gameEnd() {
   return 0;
 }
 
-function start(id) {
+function start() {
   dom.hide('welcome');
   dom.show('modal');
   dom.show('play');
@@ -127,7 +125,7 @@ const symbol = (bol = engine.turn) => {
   return 'O';
 };
 
-function move(id) {
+window.move = function (id) {
   if (engine.running) {
     if (validMove(id, symbol(engine.turn))) {
       gameEnd();
@@ -141,4 +139,6 @@ function move(id) {
     return false;
   }
   return 0;
-}
+};
+
+export { start, cancel, playAgain };
