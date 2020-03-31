@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import dom from './dom';
 
 const game = (() => {
@@ -81,6 +82,7 @@ function playAgain() {
 function cancel() {
   // eslint-disable-next-line no-restricted-globals
   location.reload(true);
+  return false;
 }
 
 function gameEnd() {
@@ -141,4 +143,6 @@ window.move = function (id) {
   return 0;
 };
 
-export { start, cancel, playAgain };
+export {
+  start, cancel, playAgain, gameBoard, validMove, game, engine, gameEnd, symbol, check, player,
+};
