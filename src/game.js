@@ -112,5 +112,5 @@ window.move = function (id) {
 };
 
 export {
-  start, cancel, playAgain,
+  start, cancel, playAgain, engine,
 };
