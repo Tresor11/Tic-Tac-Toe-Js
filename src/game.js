@@ -1,54 +1,25 @@
 /* eslint-disable func-names */
 import dom from './dom';
+// eslint-disable-next-line import/no-cycle
+import { player, symbol, check } from './player';
+
+import { gameBoard, victory } from './board';
 
 const game = (() => {
   const turn = true;
   const running = true;
-
-  function victory(arr) {
-    for (let i = 0; i <= 2; i += 1) {
-      if ((arr[i * 3] === arr[(i * 3) + 1]
-          && arr[i * 3] === arr[(i * 3) + 2]
-          && arr[i * 3] !== '')
-         || (arr[i] === arr[i + 3]
-          && arr[i] === arr[i + 6]
-          && arr[i] !== '')) {
-        return true;
-      }
-    }
-
-    if ((arr[0] === arr[4]
-        && arr[0] === arr[8]
-        && arr[0] !== '')
-       || (arr[2] === arr[4]
-        && arr[2] === arr[6]
-        && arr[2] !== '')) {
-      return true;
-    }
-
-    return false;
-  }
-
   return {
-    victory,
     turn,
     running,
   };
 })();
 
-const gameBoard = (() => {
-  const board = ['', '', '', '', '', '', '', '', ''];
-  return { board };
-})();
+// main variables initialization
 
-const player = (name1, name2) => {
-  const player1 = name1;
-  const player2 = name2;
-  return { player1, player2 };
-};
-
-let players = player('', '');
 const engine = game;
+let players = player('', '');
+
+// check if the move if valid
 
 const validMove = (_index, sign) => {
   const id = dom.getId(_index);
@@ -60,24 +31,21 @@ const validMove = (_index, sign) => {
   return false;
 };
 
-function check(bol = engine.turn) {
-  if (bol) {
-    return players.player1;
-  }
-  return players.player2;
-}
+// game reinitialization
 
 function playAgain() {
   gameBoard.board = ['', '', '', '', '', '', '', '', ''];
   engine.running = true;
   engine.turn = true;
   dom.show('status');
-  dom.render('status', `${check()} make a move 🙂 🤓`);
+  dom.render('status', `${check(engine.turn, players)} make a move 🙂 🤓`);
   dom.hide('winner');
   for (let i = 0; i <= 8; i += 1) {
     dom.render(`${i}`, '..');
   }
 }
+
+// cancel play again
 
 function cancel() {
   // eslint-disable-next-line no-restricted-globals
@@ -85,8 +53,10 @@ function cancel() {
   return false;
 }
 
+// return true if a player won,return false if it's a tie,return 0 if the game still running
+
 function gameEnd() {
-  if (engine.victory(gameBoard.board)) {
+  if (victory(gameBoard.board)) {
     engine.running = false;
     return true;
   }
@@ -97,18 +67,22 @@ function gameEnd() {
   return 0;
 }
 
+// game initialization
+
 function start() {
   dom.hide('welcome');
   dom.show('modal');
   dom.show('play');
   players = player(dom.getName('player1'), dom.getName('player2'));
-  dom.render('status', `${check()} make a move 🙂 🤓`);
+  dom.render('status', `${check(engine.turn, players)} make a move 🙂 🤓`);
 }
+
+// check if one player won or if it's a tie
 
 function winMove() {
   if (!engine.running) {
     if (gameEnd()) {
-      dom.render('win-msg', `CONGRATULATIONS ${check()}🏅🥇👏`);
+      dom.render('win-msg', `CONGRATULATIONS ${check(engine.turn, players)}🏅🥇👏`);
       dom.show('winner');
       dom.hide('status');
     } else {
@@ -119,13 +93,7 @@ function winMove() {
   }
 }
 
-
-const symbol = (bol = engine.turn) => {
-  if (bol) {
-    return 'X';
-  }
-  return 'O';
-};
+// allow current player to only make a move for an available post
 
 window.move = function (id) {
   if (engine.running) {
@@ -133,9 +101,9 @@ window.move = function (id) {
       gameEnd();
       winMove();
       engine.turn = !engine.turn;
-      dom.render('status', `${check()} make a move 🙂 🤓`);
+      dom.render('status', `${check(engine.turn, players)} make a move 🙂 🤓`);
     } else {
-      dom.render('status', ` please ${check()} make a valid move 🤔 🧐`);
+      dom.render('status', ` please ${check(engine.turn, players)} make a valid move 🤔 🧐`);
     }
   } else {
     return false;
@@ -144,5 +112,5 @@ window.move = function (id) {
 };
 
 export {
-  start, cancel, playAgain, gameBoard, validMove, game, engine, gameEnd, symbol, check, player,
+  start, cancel, playAgain,
 };

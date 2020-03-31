@@ -1,5 +1,5 @@
 import dom from './dom';
-import { start, cancel, playAgain } from './logic';
+import { start, cancel, playAgain } from './game';
 
 const showFrom = () => { dom.show('modal'); };
 dom.getElement('submit').addEventListener('click', start);

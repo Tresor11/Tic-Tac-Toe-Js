@@ -1,6 +1,6 @@
 import {
   gameBoard, engine, gameEnd, symbol, player,
-} from './logic';
+} from './game';
 
 const validMoveMock = jest.fn((index, sign) => {
   if (gameBoard.board[index] === '' && engine.running) {
