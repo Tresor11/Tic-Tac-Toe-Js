@@ -42,8 +42,24 @@ Run
 ~~~ 
 git clone https://github.com/Tresor11/Tic-Tac-Toe-Js/tree/features 
 ~~~
-to clone this project to your local machine and you are good to go.
-
+to clone this project to your local machine.
+~~~ 
+npm install
+~~~
+to get the dependacies
+~~~ 
+webpack --watch
+~~~
+to make your main.js uptodate
+~~~ 
+cd dist
+~~~
+to navidate to the html file ,open your live server and you should be good to go
+<br>
+to run the test type
+~~~ 
+npm run test
+~~~
 
 👤 **Tresor**
 
