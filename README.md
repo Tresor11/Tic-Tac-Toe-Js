@@ -46,7 +46,7 @@ to clone this project to your local machine.
 ~~~ 
 npm install
 ~~~
-to get the dependacies
+to get the dependencies
 ~~~ 
 webpack --watch
 ~~~
@@ -55,7 +55,9 @@ to make your main.js uptodate
 cd dist
 ~~~
 to navidate to the html file ,open your live server and you should be good to go
-<br>
+
+<hr>
+
 to run the test type
 ~~~ 
 npm run test
