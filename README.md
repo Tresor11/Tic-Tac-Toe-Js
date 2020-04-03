@@ -8,7 +8,7 @@ Tic tac toe is a game in which two players seek in alternate turns to complete a
 This is part of the [Ordin projects](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) from the [microverse](https://www.microverse.org/)  curriculum.
 
 ## Live link
-[Tic Tac Toe](https://raw.githack.com/Tresor11/Tic-Tac-Toe-Js/features/index.html)
+[Tic Tac Toe](https://rawcdn.githack.com/Tresor11/Tic-Tac-Toe-Js/b4236c96de0714371ea9bd928a37c68aef725702/dist/index.html)
 
 
 ## How to play the game
