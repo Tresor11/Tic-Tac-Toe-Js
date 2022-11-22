@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.20.1",
     "jest": "^25.2.4",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {}
 }
