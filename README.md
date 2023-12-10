@@ -1,9 +1,9 @@
 # Tic-Tac-Toe-Js
 
-This is an implementation of the Tic tac toe game in javascript. You can play this game in your browser.
+This is an implementation of the Tic Tac Toe game in JavaScript. You can play this game in your browser.
 ![screenshot](docs/tictactoe.png)
 
-Tic tac toe is a game in which two players seek in alternate turns to complete a row, a column, or a diagonal with either three O's or three X's drawn in the spaces of a grid of nine squares; noughts and crosses. 
+Tic tac toe is a game in which two players seek alternate turns to complete a row, a column, or a diagonal with either three O's or three X's drawn in the spaces of a grid of nine squares; noughts and crosses. 
 
 This is part of the [Ordin projects](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript) from the [microverse](https://www.microverse.org/)  curriculum.
 
@@ -12,27 +12,27 @@ This is part of the [Ordin projects](https://www.theodinproject.com/courses/java
 
 
 ## How to play the game
-- Once you navigate to the home page, Click on the start button.
-![screenshot](docs/start.png)
-- A form will pop up prompting you to enter your name. Please enter your name or else the game will by default give you names _PlayerOne_ and _PlayerTwo_.
-![screenshot](docs/start2.png)
+- Once you navigate the home page, Click the start button.
+  ![screenshot](docs/start.png)
 
-- The game instructions will change per each member's turn and name prompting you to take position on the board. The first player takes *X* and they next player takes *O* mark on the board.
-![screenshot](docs/start3.png)
+- A form will pop up prompting you to enter your name. Please enter your name, or the game will by default give you names _PlayerOne_ and _PlayerTwo_.
+  ![screenshot](docs/start2.png)
+- The game instructions will change per each member's turn and name prompting you to take a position on the board. The first player takes *X* and the next takes *O* mark on the board.
+  ![screenshot](docs/start3.png)
 
-- The game ends when one of the players gets all his X's or O's in a row, column or diagonal and a congraturatory message is sent to him with his name. The game also ends in a draw if none of the players
-has their X's or O's in a line and the board is full.
+- The game ends when one of the players gets all his X's or O's in a row, column or diagonal and a congratulatory message is sent to him with his name.
 ![screenshot](docs/start4.png)
-- 
+- The game also ends in a draw if none of the players
+has their X's or O's in a line and the board is full.
 ![screenshot](docs/draw.png)
 
 - You can play again by clicking on the *Play Again* button or *Quit*
-![screenshot](docs/tictactoe.png)
+  ![screenshot](docs/tictactoe.png)
 
 
 ## Prerequisites
 To comfortably use this project, prior knowledge of the following is ideal
-- Html and Css
+- Html and CSS
 - Javascript
 - Eslint
 - Bootstrap 4
@@ -50,11 +50,11 @@ to get the dependencies
 ~~~ 
 webpack --watch
 ~~~
-to make your main.js uptodate
+to make your main.js up-to-date
 ~~~ 
 cd dist
 ~~~
-to navidate to the html file ,open your live server and you should be good to go
+to navigate to the HTML file, open your live server and you should be good to go
 
 <hr>
 
