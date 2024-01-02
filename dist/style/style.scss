@@ -4,16 +4,17 @@ body{
 
 #modal {
     position: absolute;
-    margin-top: 20vh;
     z-index: 100;
     display: none;
+    width: 25%;
+    margin: 10% 40%;
 }
 
 #form {
   border: 3px solid black;
   background-color: white;
 }
-  
+
   .btn{
     margin-top: 7%;
     width: 100%;
@@ -22,30 +23,51 @@ body{
   h1{
     font-family: 'Monoton', cursive;
   }
-  
+
   #start{
     width: 25%;
     font-family: 'Press Start 2P', cursive;
-    font-size: 40px;
+    font-size: 3vw;;
     transition: width 2s;
+    text-wrap: wrap;
     -webkit-transition: width 2s;
     -moz-transition: width 2s;
     -ms-transition: width 2s;
     -o-transition: width 2s;
   }
-  
+
   #start:hover{
     width: 40%;
   }
-  
+
   #play{
     display: none;
     margin-top: 10vh;
   }
   #winner{
     display: none;
+    width: 25%;
+    margin: auto;
   }
 
 #status{
   text-align: center;
   }
+
+#board{
+  width: 25%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  #board{
+    width: 90%;
+  }
+  #modal{
+    width: 80%;
+    margin: 20% 15%;
+  }
+  #winner{
+    width: 90%;
+  }
+}
