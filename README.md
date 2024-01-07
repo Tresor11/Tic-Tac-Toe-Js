@@ -32,7 +32,7 @@ has their X's or O's in a line and the board is full.
 
 ## Prerequisites
 To comfortably use this project, prior knowledge of the following is ideal
-- Html and CSS
+- HTML and CSS
 - Javascript
 - Eslint
 - Bootstrap 4
